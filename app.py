@@ -24,8 +24,12 @@ app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Add a secret key for session management
 
 # Spotify API credentials
-SPOTIPY_CLIENT_ID = "c8cab740d73646199056df6fde510b05"
-SPOTIPY_CLIENT_SECRET = "37ffc1d79eea480d8565f1da8ae51a6e"
+# SPOTIPY_CLIENT_ID = ""
+# SPOTIPY_CLIENT_SECRET = ""
+
+SPOTIPY_CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
+SPOTIPY_CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET")
+
 SPOTIPY_REDIRECT_URI = "http://localhost:5000/callback"
 SCOPE = "playlist-modify-public user-library-read user-read-playback-state user-read-recently-played user-read-private user-read-email"
 
