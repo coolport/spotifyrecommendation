@@ -1,0 +1,35 @@
+# Python cache files
+__pycache__/
+*.pyc
+
+#ignore python virtual env aka VENV
+venv/
+.env
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE settings
+.vscode/
+.idea/
+
+# System files
+.DS_Store    # macOS
+Thumbs.db    # Windows
+
+# Linux system files
+.DS_Store            # macOS system file (can be ignored if you're not using macOS)
+*~                    # Backup files created by editors (e.g., vim)
+*.swp                 # Swap files (vim or emacs)
+*.swo
+*.bak                 # Backup files
+*.tmp                 # Temporary files
+
+# Jupyter
+.ipynb_checkpoints/
+
+# xcel shit
+*.csv
+*.zip
+
+
