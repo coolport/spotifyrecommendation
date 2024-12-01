@@ -17,6 +17,7 @@ from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 from preprocess import preprocess
 from filter_artists import filter_artists
+import os
 
 
 app = Flask(__name__)
@@ -52,6 +53,11 @@ def index():
 
 @app.route("/login")
 def login():
+    # medyo wack na token handling para maka change ng accounts pag nag restart ng app
+    cache_file = ".cache"
+    if os.path.exists(cache_file):
+        os.remove(cache_file)
+    # need din para maka login with different accounts
     session.clear()
     auth_url = sp_oauth.get_authorize_url()
     return render_template("login.html", auth_url=auth_url)
