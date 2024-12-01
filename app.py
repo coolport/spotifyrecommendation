@@ -51,7 +51,7 @@ def index():
 @app.route("/login")
 def login():
     auth_url = sp_oauth.get_authorize_url()
-    return redirect(auth_url)
+    return render_template("login.html", auth_url=auth_url)
 
 
 @app.route("/callback")
