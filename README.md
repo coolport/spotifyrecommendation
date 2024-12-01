@@ -8,5 +8,9 @@ PM ME NALANG SA MESSENGER
 
 ---
 
-fork removes cached files and other files not needed to be downloaded again
-(set up for PRs)
+Fork for UI improvements, ETC -- see working branch for changes
+
+Reproduce:
+cd spotifyrecommendation
+python -m venv venv
+pip install -r requirements.txt
