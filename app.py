@@ -33,6 +33,8 @@ sp_oauth = SpotifyOAuth(
     client_secret=SPOTIPY_CLIENT_SECRET,
     redirect_uri=SPOTIPY_REDIRECT_URI,
     scope=SCOPE,
+    show_dialog=True,  # Force Spotify to show permission prompt
+    cache_path=None,
 )
 
 
@@ -50,6 +52,7 @@ def index():
 
 @app.route("/login")
 def login():
+    session.clear()
     auth_url = sp_oauth.get_authorize_url()
     return render_template("login.html", auth_url=auth_url)
 
@@ -57,8 +60,14 @@ def login():
 @app.route("/callback")
 def callback():
     code = request.args.get("code")
-    token_info = sp_oauth.get_access_token(code)
-    session["token_info"] = token_info
+    try:
+        # Exchange the authorization code for an access token
+        token_info = sp_oauth.get_access_token(code)
+        session["token_info"] = token_info  # Save token for the current user
+    except Exception as e:
+        print(f"Error getting access token: {e}")
+        return redirect(url_for("login"))
+
     return redirect(url_for("index"))
 
 
