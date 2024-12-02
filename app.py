@@ -25,11 +25,11 @@ app.secret_key = "your_secret_key"  # Add a secret key for session management
 
 # Spotify API credentials
 
-SPOTIPY_CLIENT_ID = ""
-SPOTIPY_CLIENT_SECRET = ""
+# SPOTIPY_CLIENT_ID = ""
+# SPOTIPY_CLIENT_SECRET = ""
 
-# SPOTIPY_CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
-# SPOTIPY_CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET")
+SPOTIPY_CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
+SPOTIPY_CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET")
 
 SPOTIPY_REDIRECT_URI = "http://localhost:5000/callback"
 SCOPE = "playlist-modify-public user-library-read user-read-playback-state user-read-recently-played user-read-private user-read-email"
