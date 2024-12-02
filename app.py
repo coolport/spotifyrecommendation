@@ -24,11 +24,12 @@ app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Add a secret key for session management
 
 # Spotify API credentials
-# SPOTIPY_CLIENT_ID = ""
-# SPOTIPY_CLIENT_SECRET = ""
 
-SPOTIPY_CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
-SPOTIPY_CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET")
+SPOTIPY_CLIENT_ID = ""
+SPOTIPY_CLIENT_SECRET = ""
+
+# SPOTIPY_CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
+# SPOTIPY_CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET")
 
 SPOTIPY_REDIRECT_URI = "http://localhost:5000/callback"
 SCOPE = "playlist-modify-public user-library-read user-read-playback-state user-read-recently-played user-read-private user-read-email"
@@ -38,8 +39,8 @@ sp_oauth = SpotifyOAuth(
     client_secret=SPOTIPY_CLIENT_SECRET,
     redirect_uri=SPOTIPY_REDIRECT_URI,
     scope=SCOPE,
-    show_dialog=True,  # Force Spotify to show permission prompt
-    cache_path=None,
+    show_dialog=True,  # force the login / permissions? prompt
+    cache_path=None,  # set caching to false pero ayaw nmn gumana, kineep ko nalang kasi baka may masira pa idk
 )
 
 
@@ -57,7 +58,7 @@ def index():
 
 @app.route("/login")
 def login():
-    # medyo wack na token handling para maka change ng accounts pag nag restart ng app
+    # medyo wack na way to delete token para maka change ng accounts pag nag restart ng app
     cache_file = ".cache"
     if os.path.exists(cache_file):
         os.remove(cache_file)
